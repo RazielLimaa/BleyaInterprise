@@ -48,7 +48,6 @@ export default function DeveloperSection() {
         <div ref={contentRef} className="relative z-10 py-20">
           <DeveloperIntroSection />
           <DeveloperTeamSection />
-
           <DeveloperMissionSection />
           <DeveloperContactSection />
         </div>
