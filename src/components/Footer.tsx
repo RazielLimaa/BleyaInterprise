@@ -1,6 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { FooterBigText } from "./FooterBigText";
+import { FooterBottomSection } from "./FooterBottomSection";
+import { FooterConnectSection } from "./FooterConnectSection";
+import { FooterNavigationSection } from "./FooterNavigation";
+import { FooterAcknowledgmentText } from "./FooterAcknowledgmentText";
+import { FooterContactSection } from "./FooterContact";
+import { FooterStyleSection } from "./FooterStyle";
 
 export default function Footer() {
   const footerRef = useRef<HTMLDivElement>(null);
@@ -39,324 +46,20 @@ export default function Footer() {
   return (
     <footer ref={footerRef} className="bg-black text-orange-500 px-8 py-16">
       <div className="max-w-7xl mx-auto z-50 relative">
-        {/* Main Content Grid - Exactly like the image */}
         <div
           ref={sectionsRef}
           className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16"
         >
-          {/* Left Section - Description */}
-          <div className="space-y-6">
-            <p className="text-orange-400 text-lg leading-relaxed font-light">
-              A programação é um estado especial de criação digital que é tanto
-              lógica quanto criativa ao mesmo tempo.
-            </p>
-
-            <div className="space-y-2">
-              <p className="text-orange-500 text-sm font-medium">✉ Contact</p>
-              <div className="text-orange-300 text-sm space-y-1">
-                <p>eurael30215@gmail.com</p>
-                <p>Guarulhos - SP, Brazil</p>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-orange-300 text-sm font-medium mb-6 tracking-wider">
-              Navigation
-            </h3>
-            <nav ref={navLinksRef} className="space-y-3">
-              {["Home", "Work", "About", "Careers", "Systems", "Contact"].map(
-                (item, index) => (
-                  <a
-                    key={item}
-                    href="#"
-                    className="block text-orange-500 text-3xl lg:text-4xl font-bold transition-all duration-300 hover:text-orange-300 nav-link"
-                  >
-                    {item}
-                  </a>
-                )
-              )}
-            </nav>
-          </div>
-
-          <div>
-            <h3 className="text-orange-300 text-sm font-medium mb-6 tracking-wider">
-              Connect
-            </h3>
-            <div className="space-y-4">
-              <a
-                href="#"
-                className="block text-orange-400 text-lg hover:text-orange-300 transition-all duration-300 group"
-              >
-                Instagram
-                <span className="inline-block ml-2 transform group-hover:translate-x-2 group-hover:scale-110 transition-all duration-300">
-                  ↗
-                </span>
-              </a>
-              <a
-                href="#"
-                className="block text-orange-400 text-lg hover:text-orange-300 transition-all duration-300 group"
-              >
-                LinkedIn
-                <span className="inline-block ml-2 transform group-hover:translate-x-2 group-hover:scale-110 transition-all duration-300">
-                  ↗
-                </span>
-              </a>
-            </div>
-          </div>
+          <FooterContactSection />
+          <FooterNavigationSection navLinksRef={navLinksRef} />
+          <FooterConnectSection />
         </div>
-
-        {/* Acknowledgment Text */}
-        <div className="mb-8 text-orange-300/70 text-sm leading-relaxed max-w-2xl">
-          <p>
-            Reconhecemos os primeiros povos do Brasil e prestamos nossos
-            respeitos aos proprietários tradicionais das terras onde trabalhamos
-            — O Povo Brasileiro de nossa Nação.
-          </p>
-        </div>
-
-        {/* Bottom Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8">
-          <div className="text-orange-300/60 text-xs mb-4 lg:mb-0">
-            <p>©2024 BLEYA PTY LTD</p>
-          </div>
-
-          <div className="text-orange-300/60 text-xs text-center">
-            <p>LEGAL NOTICE</p>
-          </div>
-
-          <div className="text-orange-300/60 text-xs text-right">
-            <p>THURSDAY 08:51:38</p>
-          </div>
-        </div>
-
-        {/* Stacked BleYA Text - Like in the image */}
-        <div ref={bigTextRef} className="relative overflow-hidden">
-          <div className="relative">
-            <div>
-              <svg
-                className="text-orange-500 h-100vh leading-[0.25rem] px-0 py-[-20px] w-full border-0"
-                viewBox="0 0 546 270"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g filter="url(#filter1_d_0_1)">
-                  <g filter="url(#filter2_i_0_1)">
-                    <path
-                      d="M4.80378 205.747L4.11496 135.932L34.3862 135.633C39.7041 135.581 44.1769 136.253 47.8045 137.649C51.4548 139.044 54.2132 141.04 56.0799 143.635C57.9692 146.231 58.9313 149.301 58.9663 152.846C58.9917 155.414 58.4466 157.761 57.3311 159.885C56.2384 162.01 54.6878 163.798 52.6793 165.25C50.6706 166.679 48.3167 167.679 45.6177 168.251L45.6244 168.933C48.6254 169.017 51.36 169.751 53.8283 171.136C56.2964 172.498 58.2698 174.399 59.7485 176.84C61.227 179.257 61.9825 182.113 62.015 185.408C62.0527 189.226 61.0862 192.634 59.1157 195.631C57.1679 198.627 54.373 200.996 50.7309 202.737C47.0888 204.477 42.7338 205.372 37.6658 205.422L4.80378 205.747ZM23.6081 190.424L32.4713 190.337C35.6529 190.305 38.0334 189.691 39.6125 188.493C41.1915 187.273 41.9694 185.493 41.9463 183.152C41.9302 181.516 41.5415 180.133 40.7803 179.004C40.0192 177.875 38.9425 177.022 37.5504 176.445C36.181 175.867 34.5304 175.588 32.5987 175.607L23.4628 175.697L23.6081 190.424ZM23.3471 163.971L31.1194 163.894C32.7784 163.878 34.2417 163.602 35.5092 163.067C36.7767 162.531 37.7579 161.772 38.4528 160.787C39.1701 159.78 39.5218 158.561 39.5076 157.129C39.4863 154.97 38.6974 153.33 37.1408 152.209C35.584 151.065 33.6238 150.505 31.2603 150.528L23.2152 150.608L23.3471 163.971ZM122.608 204.584L121.919 134.77L140.873 134.583L141.411 189.125L169.637 188.847L169.788 204.119L122.608 204.584ZM231.132 203.514L230.443 133.699L280.758 133.202L280.909 148.474L249.547 148.784L249.665 160.783L278.437 160.499L278.587 175.771L249.816 176.055L249.934 188.055L281.16 187.746L281.311 203.018L231.132 203.514ZM340.977 132.608L362.113 132.4L376.028 160.627L376.574 160.622L389.93 132.125L411.065 131.917L385.902 180.031L386.119 201.984L367.301 202.17L367.085 180.217L340.977 132.608ZM489.75 200.962L469.297 201.164L491.652 131.122L517.56 130.866L541.293 200.453L520.84 200.655L505.069 150.217L504.523 150.223L489.75 200.962ZM485.661 173.455L524.113 173.076L524.253 187.257L485.8 187.637L485.661 173.455Z"
-                      fill="currentColor"
-                      fillOpacity="0.44"
-                    />
-                  </g>
-                  <g filter="url(#filter3_i_0_1)">
-                    <path
-                      d="M5.13072 238.883L4.44189 169.068L34.7131 168.769C40.0311 168.717 44.5038 169.389 48.1314 170.785C51.7817 172.181 54.5402 174.176 56.4068 176.772C58.2961 179.367 59.2583 182.437 59.2933 185.982C59.3186 188.55 58.7735 190.897 57.6581 193.021C56.5654 195.146 55.0147 196.934 53.0062 198.386C50.9975 199.815 48.6436 200.815 45.9446 201.387L45.9513 202.069C48.9523 202.153 51.6869 202.888 54.1553 204.272C56.6234 205.634 58.5968 207.536 60.0755 209.976C61.5539 212.393 62.3094 215.249 62.3419 218.545C62.3796 222.363 61.4132 225.77 59.4426 228.767C57.4948 231.763 54.6999 234.132 51.0578 235.873C47.4157 237.613 43.0607 238.509 37.9928 238.559L5.13072 238.883ZM23.935 223.56L32.7982 223.473C35.9799 223.441 38.3603 222.827 39.9395 221.629C41.5184 220.409 42.2963 218.629 42.2732 216.288C42.2571 214.652 41.8684 213.269 41.1073 212.14C40.3461 211.011 39.2694 210.158 37.8773 209.581C36.5079 209.004 34.8574 208.724 32.9256 208.743L23.7897 208.834L23.935 223.56ZM23.674 197.107L31.4464 197.03C33.1054 197.014 34.5686 196.738 35.8361 196.203C37.1036 195.667 38.0848 194.908 38.7797 193.924C39.4971 192.916 39.8487 191.697 39.8346 190.265C39.8133 188.106 39.0243 186.466 37.4677 185.345C35.9109 184.201 33.9507 183.641 31.5872 183.664L23.5422 183.744L23.674 197.107ZM122.935 237.72L122.246 167.906L141.2 167.719L141.738 222.261L169.964 221.983L170.115 237.255L122.935 237.72ZM231.458 236.65L230.77 166.835L281.085 166.338L281.236 181.61L249.874 181.92L249.992 193.919L278.764 193.635L278.914 208.907L250.143 209.191L250.261 221.191L281.487 220.883L281.638 236.155L231.458 236.65ZM341.304 165.744L362.44 165.536L376.355 193.763L376.901 193.758L390.257 165.261L411.392 165.053L386.229 213.167L386.446 235.12L367.628 235.306L367.412 213.353L341.304 165.744ZM490.077 234.098L469.624 234.3L491.979 164.258L517.887 164.002L541.62 233.589L521.167 233.791L505.395 183.354L504.85 183.359L490.077 234.098ZM485.987 206.592L524.44 206.212L524.58 220.393L486.127 220.773L485.987 206.592Z"
-                      fill="currentColor"
-                      fillOpacity="0.62"
-                    />
-                  </g>
-                  <g filter="url(#filter4_i_0_1)">
-                    <path
-                      d="M5.40605 266.787L4.71722 196.972L34.9885 196.673C40.3064 196.621 44.7792 197.293 48.4067 198.689C52.0571 200.085 54.8155 202.08 56.6821 204.676C58.5715 207.271 59.5336 210.341 59.5686 213.886C59.5939 216.454 59.0489 218.801 57.9334 220.925C56.8407 223.05 55.2901 224.838 53.2816 226.29C51.2728 227.719 48.919 228.719 46.2199 229.291L46.2266 229.973C49.2276 230.057 51.9623 230.792 54.4306 232.176C56.8987 233.539 58.8721 235.44 60.3508 237.88C61.8293 240.297 62.5848 243.153 62.6173 246.449C62.6549 250.267 61.6885 253.674 59.718 256.671C57.7702 259.668 54.9752 262.036 51.3331 263.777C47.691 265.517 43.336 266.413 38.2681 266.463L5.40605 266.787ZM24.2103 251.464L33.0735 251.377C36.2552 251.345 38.6356 250.731 40.2148 249.533C41.7937 248.313 42.5717 246.533 42.5486 244.192C42.5324 242.556 42.1438 241.173 41.3826 240.044C40.6214 238.915 39.5448 238.062 38.1526 237.485C36.7832 236.908 35.1327 236.628 33.201 236.648L24.065 236.738L24.2103 251.464ZM23.9493 225.011L31.7217 224.934C33.3807 224.918 34.844 224.642 36.1115 224.107C37.379 223.572 38.3602 222.812 39.055 221.828C39.7724 220.821 40.124 219.601 40.1099 218.169C40.0886 216.01 39.2996 214.37 37.7431 213.249C36.1862 212.106 34.2261 211.545 31.8626 211.569L23.8175 211.648L23.9493 225.011ZM123.21 265.625L122.521 195.81L141.475 195.623L142.013 250.166L170.239 249.887L170.39 265.159L123.21 265.625ZM231.734 264.554L231.045 194.739L281.361 194.243L281.511 209.515L250.149 209.824L250.268 221.823L279.039 221.54L279.19 236.811L250.418 237.095L250.537 249.095L281.762 248.787L281.913 264.059L231.734 264.554ZM341.58 193.648L362.715 193.44L376.631 221.668L377.176 221.662L390.532 193.165L411.667 192.957L386.504 241.071L386.721 263.025L367.904 263.21L367.687 241.257L341.58 193.648ZM490.353 262.002L469.899 262.204L492.254 192.162L518.162 191.906L541.895 261.494L521.442 261.695L505.671 211.258L505.125 211.263L490.353 262.002ZM486.263 234.496L524.715 234.116L524.855 248.297L486.403 248.677L486.263 234.496Z"
-                      fill="currentColor"
-                    />
-                  </g>
-                </g>
-                <defs>
-                  <filter
-                    id="filter1_d_0_1"
-                    x="0.114963"
-                    y="130.866"
-                    width="545.178"
-                    height="142.921"
-                    filterUnits="userSpaceOnUse"
-                    colorInterpolationFilters="sRGB"
-                  >
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feColorMatrix
-                      in="SourceAlpha"
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                      result="hardAlpha"
-                    />
-                    <feOffset dy="4" />
-                    <feGaussianBlur stdDeviation="2" />
-                    <feComposite in2="hardAlpha" operator="out" />
-                    <feColorMatrix
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in2="BackgroundImageFix"
-                      result="effect1_dropShadow_0_1"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in="SourceGraphic"
-                      in2="effect1_dropShadow_0_1"
-                      result="shape"
-                    />
-                  </filter>
-                  <filter
-                    id="filter2_i_0_1"
-                    x="4.11496"
-                    y="130.866"
-                    width="537.178"
-                    height="78.881"
-                    filterUnits="userSpaceOnUse"
-                    colorInterpolationFilters="sRGB"
-                  >
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feBlend
-                      mode="normal"
-                      in="SourceGraphic"
-                      in2="BackgroundImageFix"
-                      result="shape"
-                    />
-                    <feColorMatrix
-                      in="SourceAlpha"
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                      result="hardAlpha"
-                    />
-                    <feOffset dy="4" />
-                    <feGaussianBlur stdDeviation="2" />
-                    <feComposite
-                      in2="hardAlpha"
-                      operator="arithmetic"
-                      k2="-1"
-                      k3="1"
-                    />
-                    <feColorMatrix
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in2="shape"
-                      result="effect1_innerShadow_0_1"
-                    />
-                  </filter>
-                  <filter
-                    id="filter3_i_0_1"
-                    x="4.44189"
-                    y="164.002"
-                    width="537.178"
-                    height="78.881"
-                    filterUnits="userSpaceOnUse"
-                    colorInterpolationFilters="sRGB"
-                  >
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feBlend
-                      mode="normal"
-                      in="SourceGraphic"
-                      in2="BackgroundImageFix"
-                      result="shape"
-                    />
-                    <feColorMatrix
-                      in="SourceAlpha"
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                      result="hardAlpha"
-                    />
-                    <feOffset dy="4" />
-                    <feGaussianBlur stdDeviation="2" />
-                    <feComposite
-                      in2="hardAlpha"
-                      operator="arithmetic"
-                      k2="-1"
-                      k3="1"
-                    />
-                    <feColorMatrix
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in2="shape"
-                      result="effect1_innerShadow_0_1"
-                    />
-                  </filter>
-                  <filter
-                    id="filter4_i_0_1"
-                    x="4.71722"
-                    y="191.906"
-                    width="537.178"
-                    height="78.881"
-                    filterUnits="userSpaceOnUse"
-                    colorInterpolationFilters="sRGB"
-                  >
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feBlend
-                      mode="normal"
-                      in="SourceGraphic"
-                      in2="BackgroundImageFix"
-                      result="shape"
-                    />
-                    <feColorMatrix
-                      in="SourceAlpha"
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                      result="hardAlpha"
-                    />
-                    <feOffset dy="4" />
-                    <feGaussianBlur stdDeviation="2" />
-                    <feComposite
-                      in2="hardAlpha"
-                      operator="arithmetic"
-                      k2="-1"
-                      k3="1"
-                    />
-                    <feColorMatrix
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in2="shape"
-                      result="effect1_innerShadow_0_1"
-                    />
-                  </filter>
-                </defs>
-              </svg>
-            </div>
-
-            <div
-              className="opacity-70 absolute top-0 left-0"
-              style={{ transform: "translateY(-60px)" }}
-            ></div>
-          </div>
-        </div>
+        <FooterAcknowledgmentText />
+        <FooterBottomSection />
+        <FooterBigText bigTextRef={bigTextRef} />
       </div>
 
-      <style>{`
-        .nav-link {
-          transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .nav-link:hover {
-          text-shadow: 0 0 20px rgba(251, 146, 60, 0.5);
-          transform: translateX(8px) scale(1.02);
-        }
-        
-        /* Advanced hover effects */
-        .nav-link::before {
-          content: '';
-          position: absolute;
-          left: -10px;
-          top: 50%;
-          width: 0;
-          height: 2px;
-          background: linear-gradient(90deg, transparent, #f97316);
-          transform: translateY(-50%);
-          transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .nav-link:hover::before {
-          width: calc(100% + 20px);
-        }
-      `}</style>
+      <FooterStyleSection />
     </footer>
   );
 }

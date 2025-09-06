@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Navigation from "@/components/navigation";
-import HeroSection from "@/components/hero-section";
+import HeroSection from "@/components/HeroSection";
 import AILearningSection from "@/components/ai-learning-section";
 import BackgroundTransition from "@/components/background-transition";
 import DeveloperSection from "@/components/developer-section";
@@ -14,7 +14,6 @@ export default function HomePage() {
     if (typeof window !== "undefined" && (window as any).gsap) {
       const gsap = (window as any).gsap;
 
-      // Set initial states
       gsap.set(".hero-title-line-1", { opacity: 0, y: 100 });
       gsap.set(".hero-title-line-2", { opacity: 0, y: 100 });
       gsap.set(".author-credit", { opacity: 0, x: -50 });
@@ -22,7 +21,6 @@ export default function HomePage() {
       gsap.set(".scroll-indicator", { opacity: 0, y: 50 });
       gsap.set(".status-info", { opacity: 0, x: 50 });
 
-      // Create timeline for orchestrated entrance
       const tl = gsap.timeline({ delay: 0.5 });
 
       tl.to(".hero-title-line-1", {
@@ -82,7 +80,6 @@ export default function HomePage() {
           "-=0.6"
         );
 
-      // Continuous glow animation for main title
       gsap.to(".hero-title-line-1", {
         textShadow:
           "0 0 40px hsla(0, 100%, 50%, 0.6), 0 0 60px hsla(25, 100%, 50%, 0.4)",
