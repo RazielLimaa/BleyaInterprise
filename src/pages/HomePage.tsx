@@ -5,7 +5,7 @@ import Navigation from "@/components/navigation";
 import HeroSection from "@/components/HeroSection";
 import AILearningSection from "@/components/ai-learning-section";
 import BackgroundTransition from "@/components/background-transition";
-import DeveloperSection from "@/components/developer-section";
+import DeveloperSection from "@/components/DeveloperSection";
 import CTASection from "@/components/cta-section";
 import Footer from "../components/Footer";
 
