@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import FaultyTerminal from "./FaultyTerminal";
-import { useDeveloperAnimations } from "@/hooks/useDeveloperAnimarions";
+import { useDeveloperAnimations } from "@/hooks/animations/useDeveloperAnimarions";
 import { DeveloperContactSection } from "./DeveloperContactSection";
 import { DeveloperTeamSection } from "./DeveloperTeam";
 import { DeveloperIntroSection } from "./DeveloperIntro";

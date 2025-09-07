@@ -3,10 +3,10 @@
 import { useEffect } from "react";
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/HeroSection";
-import AILearningSection from "@/components/ai-learning-section";
+import AILearningSection from "@/components/AILearningSection";
 import BackgroundTransition from "@/components/background-transition";
 import DeveloperSection from "@/components/DeveloperSection";
-import CTASection from "@/components/cta-section";
+import CTASection from "@/components/CtaSection";
 import Footer from "../components/Footer";
 
 export default function HomePage() {
