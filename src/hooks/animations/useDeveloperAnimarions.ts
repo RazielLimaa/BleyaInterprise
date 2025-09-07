@@ -1,20 +1,20 @@
 // hooks/useDeveloperAnimations.ts
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-export function useDeveloperAnimations(
-  sectionRef: React.RefObject<HTMLElement>,
-  contentRef: React.RefObject<HTMLDivElement>
-) {
+export function useDeveloperAnimations() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (typeof window === "undefined" || !(window as any).gsap) return;
 
     const gsap = (window as any).gsap;
-    const content = contentRef.current;
     const section = sectionRef.current;
+    const content = contentRef.current;
 
-    if (!content || !section) return;
+    if (!section || !content) return;
 
     // Seletores
     const cards = content.querySelectorAll(".tech-card");
@@ -33,26 +33,9 @@ export function useDeveloperAnimations(
       opacity: 0,
       stagger: 0.2,
     })
-      .from(
-        cards,
-        {
-          y: 100,
-          opacity: 0,
-          stagger: 0.15,
-        },
-        "-=0.5"
-      )
-      .from(
-        skillCards,
-        {
-          y: 30,
-          opacity: 0,
-          stagger: 0.1,
-        },
-        "-=0.7"
-      );
+      .from(cards, { y: 100, opacity: 0, stagger: 0.15 }, "-=0.5")
+      .from(skillCards, { y: 30, opacity: 0, stagger: 0.1 }, "-=0.7");
 
-    // Animação contínua nos stats
     statsCards.forEach((card: Element) => {
       gsap.to(card, {
         y: -10,
@@ -64,7 +47,6 @@ export function useDeveloperAnimations(
       });
     });
 
-    // Scroll-trigger para destacar cards
     developerCards.forEach((card: Element) => {
       gsap.fromTo(
         card,
@@ -81,12 +63,13 @@ export function useDeveloperAnimations(
       );
     });
 
-    // Background animado
     gsap.to(section, {
       backgroundPosition: "200% 0",
       duration: 20,
       ease: "none",
       repeat: -1,
     });
-  }, [sectionRef, contentRef]);
+  }, []);
+
+  return { sectionRef, contentRef };
 }

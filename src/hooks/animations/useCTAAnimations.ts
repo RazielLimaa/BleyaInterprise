@@ -1,26 +1,18 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface UseCTAAnimationsProps {
-  sectionRef: React.RefObject<HTMLElement>;
-  titleRef: React.RefObject<HTMLDivElement>;
-  subtitleRef: React.RefObject<HTMLParagraphElement>;
-  buttonRef: React.RefObject<HTMLButtonElement>;
-  japaneseRef: React.RefObject<HTMLDivElement>;
-}
+export function useCTAAnimations() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const japaneseRef = useRef<HTMLDivElement>(null);
 
-export function useCTAAnimations({
-  sectionRef,
-  titleRef,
-  subtitleRef,
-  buttonRef,
-  japaneseRef,
-}: UseCTAAnimationsProps) {
   useEffect(() => {
     const section = sectionRef.current;
     const title = titleRef.current;
@@ -89,5 +81,13 @@ export function useCTAAnimations({
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [sectionRef, titleRef, subtitleRef, buttonRef, japaneseRef]);
+  }, []);
+
+  return {
+    sectionRef,
+    titleRef,
+    subtitleRef,
+    buttonRef,
+    japaneseRef,
+  };
 }

@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import FaultyTerminal from "./FaultyTerminal";
 import { useDeveloperAnimations } from "@/hooks/animations/useDeveloperAnimarions";
 import { DeveloperContactSection } from "./DeveloperContactSection";
@@ -9,10 +8,7 @@ import { DeveloperIntroSection } from "./DeveloperIntro";
 import { DeveloperMissionSection } from "./DeveloperMissionSection";
 
 export default function DeveloperSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useDeveloperAnimations(sectionRef, contentRef);
+  const { sectionRef, contentRef } = useDeveloperAnimations();
 
   return (
     <>
